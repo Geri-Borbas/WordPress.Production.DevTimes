@@ -13,6 +13,6 @@ function devtimes_enqueue_styles()
 }
 add_action( 'wp_enqueue_scripts', 'devtimes_enqueue_styles' );
 
-require_once('inc/devtimes.excerpt.php');
+require_once('inc/devtimes.app.php');
 
 ?>

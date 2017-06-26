@@ -15,4 +15,4 @@ function devtimes_excerpt_filter($excerpt)
     );
 }
 
-add_filter('get_the_excerpt', 'devtimes_excerpt_filter');
+// add_filter('get_the_excerpt', 'devtimes_excerpt_filter');
