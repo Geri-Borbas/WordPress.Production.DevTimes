@@ -1,5 +1,13 @@
 # twentyseventeen-devtimes
 
+* 0.0.8
+
+    + Extracted post meta features
+        + Wordpress related stuff gone to `Meta` class
+        + Actual model implementations can extend `Meta`
+            + See `AppDetailsMeta`
+            + See `AppProjectMeta`            
+
 * 0.0.4 - 0.0.5
 
     + Renamings

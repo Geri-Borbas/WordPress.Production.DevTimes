@@ -4,7 +4,8 @@
 namespace DevTimes;
 
 
-require_once('AppMeta.php');
+require_once('AppDetailsMeta.php');
+require_once('AppProjectMeta.php');
 
 
 class App
@@ -17,12 +18,12 @@ class App
     private $description = 'Applications';
     private $slug = 'app';
 
-    private $nonce_key = 'app_nonce_key';
-    private $nonce = 'app_nonce';
-    private $meta_key = "app_meta";
-
     // Construction time.
     private $textdomain;
+
+    // Meta.
+    private $details;
+    private $project;
 
 
     function __construct($textdomain)
@@ -46,11 +47,10 @@ class App
             function()
             { $this->register_post_type(); }
         );
-        add_action(
-            'save_post',
-            function()
-            { $this->save_post($this->meta_key); }
-        );
+
+        // Meta (they hook up their actions within).
+        $this->details = new AppDetailsMeta($this->postType);
+        $this->project = new AppProjectMeta($this->postType);
     }
 
     function register_taxonomy_with_name($taxonomy_singular, $taxonomy_plural, $hierarchical = false)
@@ -133,59 +133,7 @@ class App
 
     function register_meta_boxes()
     {
-        add_meta_box(
-            'app_times', // Meta box ID (used in the 'id' attribute for the meta box).
-            'Times', // Title of the meta box.
-            function() // Function that fills the box with the desired content. The function should echo its output.
-            {
-                $this->render_meta_box
-                (
-                    $this->meta_key,
-                    'App.MetaBox.twig'
-                );
-            },
-            $this->postType,
-            'normal', // Post edit screen contexts include 'normal', 'side', and 'advanced'.
-            'high'  // The priority within the context where the boxes should show ('high', 'low'). Default 'default'.
-        );
-    }
-
-    function render_meta_box($key, $template)
-    {
-        // Get meta.
-        $appMeta = AppMeta::parse($key);
-
-        // Render.
-        wp_nonce_field($this->nonce, $this->nonce_key);
-        \Timber\Timber::render($template, $appMeta);
-    }
-
-    function save_post($key)
-    {
-        global $post;
-
-        // Checks.
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-        if (!isset( $_POST[$this->nonce_key] ) || !wp_verify_nonce($_POST[$this->nonce_key], $this->nonce)) return;
-        if(!current_user_can('edit_post', $post->ID)) return;
-
-        // Get prefixed fields from $_POST.
-        $meta = array();
-        foreach($_POST as $eachKey => $eachValue)
-        {
-            if (strpos($eachKey, $key) !== false) // Only if prefixed with key
-            { $meta[$eachKey] = $eachValue; }
-        }
-
-        // UPDATE.
-        if(get_post_meta($post->ID, $key, true))
-        { update_post_meta($post->ID, $key, $meta); }
-
-        // CREATE.
-        else
-        { add_post_meta($post->ID, $key, $meta); }
-
-        // DELETE (if no data in $_POST).
-        if (!$_POST[$key]) delete_post_meta($post->ID, $meta);
+        $this->details->AddMetaBox();
+        $this->project->AddMetaBox();
     }
 }
