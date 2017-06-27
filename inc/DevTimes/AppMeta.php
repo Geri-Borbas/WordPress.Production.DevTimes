@@ -17,14 +17,20 @@ class AppMeta
     public $app_meta_teamSize;
 
 
+    static function parse($key)
+    {
+        global $post;
+        $meta = get_post_meta($post->ID, $key, true);
+        $appMeta = new AppMeta($meta);
+        return (array)$appMeta;
+    }
+
     function __construct($meta)
     {
-        $this->app_meta_title = $meta['app_meta_title'];
-        $this->app_meta_developer_twitter = $meta['app_meta_developer_twitter'];
-        $this->app_meta_appID_iOS = $meta['app_meta_appID_iOS'];
-        $this->app_meta_appID_Android = $meta['app_meta_appID_Android'];
-        $this->app_meta_netHours = $meta['app_meta_netHours'];
-        $this->app_meta_grossHours = $meta['app_meta_grossHours'];
-        $this->app_meta_teamSize = $meta['app_meta_teamSize'];
+        // Array elements to properties.
+        foreach ($meta as $eachKey => $eachValue)
+        { $this->$eachKey = $eachValue; }
     }
+
+
 }

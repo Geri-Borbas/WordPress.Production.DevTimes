@@ -1,5 +1,11 @@
 # twentyseventeen-devtimes
 
+* 0.0.4 - 0.0.5
+
+    + Renamings
+    + Meta model extracted to `AppMeta` class
+        + Meta(box) features should slowly moved down there
+
 * 0.0.3
 
     + Custom post type "App" is up and running

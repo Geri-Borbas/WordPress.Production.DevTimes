@@ -153,20 +153,11 @@ class App
     function render_meta_box($key, $template)
     {
         // Get meta.
-        global $post;
-        $meta = get_post_meta($post->ID, $key, true);
-        $appMeta = new AppMeta($meta);
+        $appMeta = AppMeta::parse($key);
 
         // Render.
         wp_nonce_field($this->nonce, $this->nonce_key);
-        \Timber\Timber::render($template, (array)$appMeta);
-    }
-
-    function log_meta($meta)
-    {
-        echo '<pre>';
-        print_r($meta);
-        echo '</pre>';
+        \Timber\Timber::render($template, $appMeta);
     }
 
     function save_post($key)
