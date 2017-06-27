@@ -8,7 +8,7 @@ add_action(
 );
 
 // "App" post format.
-require_once('inc/devtimes.app.php');
-$app = new App('twentyseventeen-devtimes');
+require_once('inc/DevTimes/App.php');
+$app = new DevTimes\App('twentyseventeen-devtimes');
 
 ?>

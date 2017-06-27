@@ -1,6 +1,12 @@
 <?php
 
 
+namespace DevTimes;
+
+
+require_once('AppMeta.php');
+
+
 class App
 {
 
@@ -135,7 +141,7 @@ class App
                 $this->render_meta_box
                 (
                     $this->meta_key,
-                    'devtimes.app.metabox.twig'
+                    'App.MetaBox.twig'
                 );
             },
             $this->postType,
@@ -149,11 +155,18 @@ class App
         // Get meta.
         global $post;
         $meta = get_post_meta($post->ID, $key, true);
+        $appMeta = new AppMeta($meta);
 
         // Render.
         wp_nonce_field($this->nonce, $this->nonce_key);
-        Timber::render($template, ($meta) ? $meta : array());
+        \Timber\Timber::render($template, (array)$appMeta);
+    }
 
+    function log_meta($meta)
+    {
+        echo '<pre>';
+        print_r($meta);
+        echo '</pre>';
     }
 
     function save_post($key)
@@ -185,6 +198,3 @@ class App
         if (!$_POST[$key]) delete_post_meta($post->ID, $meta);
     }
 }
-
-// Instance.
-$app = new App();
