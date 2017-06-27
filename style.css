@@ -6,8 +6,23 @@ Author URI: https://twitter.com/_eppz
 Template: twentyseventeen
 Description: Twenty Seventeen child theme for #DevTimes.
 Version: 0.0.1
-License: MIT
+License: MIT 1.0
 License URI: https://opensource.org/licenses/MIT
-Text Domain: devtimes
+Text Domain: twentyseventeen-devtimes
 Tags: dev, times
 */
+
+@media screen and (min-width: 48em)
+{
+    .blog:not(.has-sidebar) #primary article,
+    .archive:not(.page-one-column):not(.has-sidebar) #primary article,
+    .search:not(.has-sidebar) #primary article,
+    .error404:not(.has-sidebar) #primary .page-content,
+    .error404.has-sidebar #primary .page-content,
+    body.page-two-column:not(.archive) #primary .entry-content,
+    body.page-two-column #comments
+    {
+        float: left; /* right; */
+        width: 100%; /* 58%; */
+    }
+}
