@@ -4,7 +4,7 @@
 
     + Put twig templates to `templates`
     
-* 0.2.0
+* 0.2.1
 
     + Removed `key` from `Meta`  
         + Use `id` directly
