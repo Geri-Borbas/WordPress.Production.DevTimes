@@ -15,7 +15,7 @@ class AppDetailsMeta extends Meta
     protected $key = "app_meta";
     protected $id = "app_times";
     protected $title = "Times";
-    protected $template = "App.Details.MetaBox.twig";
+    protected $template = "AppDetailsMeta.MetaBox.twig";
 
     // Data.
     public $app_meta_title;

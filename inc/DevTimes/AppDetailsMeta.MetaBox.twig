@@ -1,0 +1,51 @@
+<div>
+
+    <label>App title</label>
+    <input type="text"
+           name="app_details_title"
+           value="{{ app_details_title }}"
+           class="widefat" />
+
+    <label>Developer (Twitter account)</label>
+    <input type="text"
+           name="app_details_twitter"
+           value="{{ app_details_twitter }}"
+           class="widefat" />
+
+    <label>App ID (iOS)</label>
+    <input type="text"
+           id="input_appID_iOS"
+           name="app_details_appID_iOS"
+           value="{{ app_details_appID_iOS }}"
+           class="widefat"
+           oninput="appDetailsMeta.appID_iOS_changed(event)"/>
+
+    <label>App Store name</label>
+    <input type="text"
+           id="app_details_trackCensoredName"
+           name="app_details_trackCensoredName"
+           value="{{ app_details_trackCensoredName }}"
+           class="widefat" />
+
+    <label>App Store url</label>
+    <input type="text"
+           id="app_details_trackViewUrl"
+           name="app_details_trackViewUrl"
+           value="{{ app_details_trackViewUrl }}"
+           class="widefat" />
+
+    <label>iTunes artwork</label>
+    <input type="text"
+           id="app_details_artworkUrl512"
+           name="app_details_artworkUrl512"
+           value="{{ app_details_artworkUrl512 }}"
+           class="widefat" />
+
+    <label>Release date</label>
+    <input type="text"
+           id="app_details_releaseDate"
+           name="app_details_releaseDate"
+           value="{{ app_details_releaseDate }}"
+           class="widefat" />
+
+</div>

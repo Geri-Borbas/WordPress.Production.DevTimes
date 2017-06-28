@@ -15,7 +15,7 @@ class AppProjectMeta extends Meta
     protected $key = "app_project";
     protected $id = "app_project";
     protected $title = "Project";
-    protected $template = "App.Project.MetaBox.twig";
+    protected $template = "AppProjectMeta.MetaBox.twig";
 
     // Data.
     public $app_project_netHours;
