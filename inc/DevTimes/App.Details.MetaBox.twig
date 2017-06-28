@@ -14,32 +14,38 @@
 
     <label>App ID (iOS)</label>
     <input type="text"
+           id="input_appID_iOS"
            name="app_meta_appID_iOS"
            value="{{ app_meta_appID_iOS }}"
+           class="widefat"
+           oninput="appDetailsMeta.appID_iOS_changed(event)"/>
+
+    <label>App Store name</label>
+    <input type="text"
+           id="app_meta_trackCensoredName"
+           name="app_meta_trackCensoredName"
+           value="{{ app_meta_trackCensoredName }}"
            class="widefat" />
 
-    <label>App ID (Android)</label>
+    <label>App Store url</label>
     <input type="text"
-           name="app_meta_appID_Android"
-           value="{{ app_meta_appID_Android }}"
+           id="app_meta_trackViewUrl"
+           name="app_meta_trackViewUrl"
+           value="{{ app_meta_trackViewUrl }}"
            class="widefat" />
 
-    <label>Net manhours to make (hours)</label>
+    <label>iTunes artwork</label>
     <input type="text"
-           name="app_meta_netHours"
-           value="{{ app_meta_netHours }}"
+           id="app_meta_artworkUrl512"
+           name="app_meta_artworkUrl512"
+           value="{{ app_meta_artworkUrl512 }}"
            class="widefat" />
 
-    <label>Gross project duration (months)</label>
+    <label>Release date</label>
     <input type="text"
-           name="app_meta_grossHours"
-           value="{{ app_meta_grossHours }}"
-           class="widefat" />
-
-    <label>Team size (people)</label>
-    <input type="text"
-           name="app_meta_teamSize"
-           value="{{ app_meta_teamSize }}"
+           id="app_meta_releaseDate"
+           name="app_meta_releaseDate"
+           value="{{ app_meta_releaseDate }}"
            class="widefat" />
 
 </div>

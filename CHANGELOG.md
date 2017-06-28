@@ -1,5 +1,21 @@
 # twentyseventeen-devtimes
 
+* Doing
+
+    + Put twig templated to `templates`
+    + Remove `key` from `Meta`
+        + Use `id` directly
+    + Save properties each (instead of a single array)
+        + Mark properties to save 
+
+* 0.1.0
+
+    + Enqueue admin scripts 
+    + iTunes API hookup
+        + Lookup using Affilate API
+        + Store some relevant field in `AppDetailsMeta`
+        + Updated in excerpt template
+
 * 0.0.8
 
     + Extracted post meta features

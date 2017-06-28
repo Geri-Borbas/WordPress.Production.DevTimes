@@ -25,4 +25,21 @@ class AppDetailsMeta extends Meta
     public $app_meta_netHours;
     public $app_meta_grossHours;
     public $app_meta_teamSize;
+
+    // iTunes.
+    public $app_meta_trackCensoredName;
+    public $app_meta_trackViewUrl;
+    public $app_meta_artworkUrl512;
+    public $app_meta_releaseDate;
+
+
+    protected function render()
+    {
+        parent::render();
+
+        // Load scripts.
+        wp_enqueue_script('qwest.min.js', get_stylesheet_directory_uri().'/js/'.'qwest.min.js');
+        wp_enqueue_script('eppz!js.min.js', get_stylesheet_directory_uri().'/js/'.'eppz!js.min.js');
+        wp_enqueue_script('AppDetailsMeta.js', get_stylesheet_directory_uri().'/js/'.'AppDetailsMeta.js', array('jquery'), null, true);
+    }
 }

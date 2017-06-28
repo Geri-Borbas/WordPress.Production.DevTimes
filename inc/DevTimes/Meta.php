@@ -46,7 +46,7 @@ class Meta
         );
     }
 
-    function render()
+    protected function render()
     {
         // Get meta.
         $this->load();
