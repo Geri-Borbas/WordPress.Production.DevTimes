@@ -4,14 +4,23 @@
 namespace DevTimes;
 
 
+class Inspector
+{
+
+
+    public static function get_object_public_vars($object)
+    { return get_object_vars($object); }
+}
+
+
 class Meta
 {
 
 
-    protected $key = "meta"; // Prefix
-    protected $id = "meta";
     protected $title = "Meta";
+    protected $id = "meta"; // Use this as prefix in template attributes
     protected $template = "MetaBox.twig";
+
     protected $screen = "normal";
     protected $priority = "high";
 
@@ -53,21 +62,47 @@ class Meta
 
         // Render.
         wp_nonce_field($this->nonce, $this->nonce_key);
-        \Timber\Timber::render($this->template, $this->arrayRepresentation());
+        \Timber\Timber::render($this->template, $this->prefixedArrayOfPublicPropertiesAndValues());
     }
 
     protected function load()
     {
         global $post;
-        $meta = get_post_meta($post->ID, $this->key, true);
 
-        // Array elements to properties.
-        foreach ($meta as $eachKey => $eachValue)
-        { $this->$eachKey = $eachValue; }
+        // echo '<pre>';
+        // print_r($_POST);
+
+        // Populate public properties from meta.
+        $properties = $this->getPublicPropertiesAndValues();
+        foreach ($properties as $eachPropertyName => $eachPropertyValue)
+        {
+            $eachMetaKey = $this->id."_".$eachPropertyName;
+            // echo 'Set `'.$eachPropertyName.'`'.' to meta `'.$eachMetaKey.'`.'.PHP_EOL;
+            $this->$eachPropertyName = get_post_meta($post->ID, $eachMetaKey, true);
+        }
+
+        // echo '</pre>';
     }
 
-    function arrayRepresentation()
-    { return (array)$this; }
+    function getPublicPropertiesAndValues()
+    {
+        $publicPropertiesAndValues = Inspector::get_object_public_vars($this);
+        // echo '<pre>';
+        // print_r($publicPropertiesAndValues);
+        // echo '</pre>';
+        return $publicPropertiesAndValues;
+    }
+
+    function prefixedArrayOfPublicPropertiesAndValues()
+    {
+        $publicPropertiesAndValues = Inspector::get_object_public_vars($this);
+        foreach($publicPropertiesAndValues as $eachKey => $eachValue)
+        {
+            $publicPropertiesAndValues[$this->id.'_'.$eachKey] = $eachValue; // Prefix
+            unset($publicPropertiesAndValues[$eachKey]); // Unset unprefixed
+        }
+        return $publicPropertiesAndValues;
+    }
 
     function save()
     {
@@ -78,24 +113,25 @@ class Meta
         if (!isset( $_POST[$this->nonce_key] ) || !wp_verify_nonce($_POST[$this->nonce_key], $this->nonce)) return;
         if(!current_user_can('edit_post', $post->ID)) return;
 
-        // Get prefixed fields from $_POST.
-        $meta = array();
+        //Update corresponding $_POST values in meta.
         foreach($_POST as $eachKey => $eachValue)
         {
-            if (strpos($eachKey, $this->key) !== false) // Only if prefixed with key
-            { $meta[$eachKey] = $eachValue; }
+            if (strpos($eachKey, $this->id) !== false) // Only if prefixed with key
+            { $this->updateMeta($post->ID, $eachKey, $eachValue); }
         }
+    }
 
+    function updateMeta($postID, $key, $value)
+    {
         // UPDATE.
-        if(get_post_meta($post->ID, $this->key, true))
-        { update_post_meta($post->ID, $this->key, $meta); }
+        if(get_post_meta($postID, $key, true))
+        { update_post_meta($postID, $key, $value); }
 
         // CREATE.
         else
-        { add_post_meta($post->ID, $this->key, $meta); }
+        { add_post_meta($postID, $key, $value); }
 
         // DELETE (if no data in $_POST).
-        if (!$_POST[$this->key]) delete_post_meta($post->ID, $meta);
+        if (!$_POST[$key]) delete_post_meta($postID, $key);
     }
-
 }

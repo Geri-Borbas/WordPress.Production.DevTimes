@@ -91,7 +91,7 @@ class App
 
                 // UI.
                 'menu_position' => 5,
-                'menu_icon' => 'dashicons-tablet',
+                'menu_icon' => 'dashicons-smartphone',
                 'labels' => array
                 (
                     'name' => __($this->plural, $this->textdomain),
@@ -112,6 +112,7 @@ class App
                 // Features.
                 'supports' => array
                 (
+                    // 'custom-fields', // Debug
                     'title',
                     'author'
                 ),

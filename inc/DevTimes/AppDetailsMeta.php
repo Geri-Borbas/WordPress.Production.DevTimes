@@ -11,26 +11,21 @@ class AppDetailsMeta extends Meta
 {
 
 
-    // Attributes.
-    protected $key = "app_meta";
-    protected $id = "app_times";
-    protected $title = "Times";
-    protected $template = "AppDetailsMeta.MetaBox.twig";
-
     // Data.
-    public $app_meta_title;
-    public $app_meta_developer_twitter;
-    public $app_meta_appID_iOS;
-    public $app_meta_appID_Android;
-    public $app_meta_netHours;
-    public $app_meta_grossHours;
-    public $app_meta_teamSize;
+    public $name;
+    public $twitter;
+    public $appID_iOS;
 
     // iTunes.
-    public $app_meta_trackCensoredName;
-    public $app_meta_trackViewUrl;
-    public $app_meta_artworkUrl512;
-    public $app_meta_releaseDate;
+    public $trackCensoredName;
+    public $trackViewUrl;
+    public $artworkUrl512;
+    public $releaseDate;
+
+    // Meta attributes.
+    protected $title = "Details";
+    protected $id = "app_details"; // Use this as prefix in template attributes
+    protected $template = "AppDetailsMeta.MetaBox.twig";
 
 
     protected function render()
@@ -40,6 +35,6 @@ class AppDetailsMeta extends Meta
         // Load scripts.
         wp_enqueue_script('qwest.min.js', get_stylesheet_directory_uri().'/js/'.'qwest.min.js');
         wp_enqueue_script('eppz!js.min.js', get_stylesheet_directory_uri().'/js/'.'eppz!js.min.js');
-        wp_enqueue_script('AppDetailsMeta.js', get_stylesheet_directory_uri().'/js/'.'AppDetailsMeta.js', array('jquery'), null, true);
+        wp_enqueue_script('AppDetailsMeta.js', get_stylesheet_directory_uri().'/js/'.'AppDetailsMeta.js', array('jquery'), '0.2.0', true);
     }
 }

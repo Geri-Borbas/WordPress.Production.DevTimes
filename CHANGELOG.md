@@ -2,11 +2,14 @@
 
 * Doing
 
-    + Put twig templated to `templates`
-    + Remove `key` from `Meta`
+    + Put twig templates to `templates`
+    
+* 0.2.0
+
+    + Removed `key` from `Meta`  
         + Use `id` directly
     + Save properties each (instead of a single array)
-        + Mark properties to save 
+        + Only public properties get saved 
 
 * 0.1.0
 
