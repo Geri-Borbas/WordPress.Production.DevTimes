@@ -40,6 +40,9 @@ class Meta
             function()
             { $this->save(); }
         );
+
+        // Set template location.
+        \Timber\Timber::$dirname = 'templates';
     }
 
     public function AddMetaBox()
@@ -62,7 +65,10 @@ class Meta
 
         // Render.
         wp_nonce_field($this->nonce, $this->nonce_key);
-        \Timber\Timber::render($this->template, $this->prefixedArrayOfPublicPropertiesAndValues());
+        \Timber\Timber::render(
+            $this->template,
+            $this->prefixedArrayOfPublicPropertiesAndValues()
+        );
     }
 
     protected function load()

@@ -1,6 +1,6 @@
 # twentyseventeen-devtimes
 
-* Doing
+* 0.2.2
 
     + Put twig templates to `templates`
     

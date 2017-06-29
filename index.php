@@ -12,7 +12,7 @@
 					foreach ($apps as $eachApp)
 					{
 						$meta = get_post_meta($eachApp->ID, 'app_meta', true);
-						Timber::render('template-parts/post/devtimes.app.excerpt.twig', ($meta) ? $meta : array());
+						Timber::render('templates/App.Excerpt.twig', ($meta) ? $meta : array());
 					}
 				}
 			?>
