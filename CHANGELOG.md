@@ -1,5 +1,12 @@
 # twentyseventeen-devtimes
 
+* 0.3.0
+
+    + Built `AppAppStore` meta box
+        + `AppAppStore.MetaBox.twig`
+        + `App.scss`
+        + Enqueue admin styles in `functions.php`
+
 * 0.2.3
 
     + `design` files

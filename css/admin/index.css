@@ -1,0 +1,74 @@
+#poststuff .inside {
+  margin-top: 12px; }
+  #poststuff .inside #app_appstore div.horizontal {
+    height: 100px;
+    position: relative;
+    margin-bottom: 12px; }
+    #poststuff .inside #app_appstore div.horizontal img, #poststuff .inside #app_appstore div.horizontal div {
+      display: inline-block;
+      width: auto;
+      margin: 0;
+      padding: 0;
+      vertical-align: text-top; }
+    #poststuff .inside #app_appstore div.horizontal img.icon,
+    #poststuff .inside #app_appstore div.horizontal img.mask {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    #poststuff .inside #app_appstore div.horizontal div {
+      position: absolute;
+      top: 0;
+      left: 112px;
+      right: 0; }
+  #poststuff .inside #app_appstore input {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    /* Chrome */
+    /* IE 10+ */
+    /* Firefox 19+ */
+    /* Firefox 4 - 18 */ }
+    #poststuff .inside #app_appstore input::-webkit-input-placeholder {
+      color: #72777c; }
+    #poststuff .inside #app_appstore input:-ms-input-placeholder {
+      color: #72777c; }
+    #poststuff .inside #app_appstore input::-moz-placeholder {
+      color: #72777c; }
+    #poststuff .inside #app_appstore input:-moz-placeholder {
+      color: #72777c; }
+    #poststuff .inside #app_appstore input:first-child {
+      margin-top: 0px; }
+    #poststuff .inside #app_appstore input:last-child {
+      margin-bottom: 0px; }
+  #poststuff .inside #app_appstore input[readonly] {
+    color: lightgray;
+    background-color: white;
+    /* Chrome */
+    /* IE 10+ */
+    /* Firefox 19+ */
+    /* Firefox 4 - 18 */ }
+    #poststuff .inside #app_appstore input[readonly]::-webkit-input-placeholder {
+      color: lightgray; }
+    #poststuff .inside #app_appstore input[readonly]:-ms-input-placeholder {
+      color: lightgray; }
+    #poststuff .inside #app_appstore input[readonly]::-moz-placeholder {
+      color: lightgray; }
+    #poststuff .inside #app_appstore input[readonly]:-moz-placeholder {
+      color: lightgray; }
+  #poststuff .inside #app_appstore input#input_appID {
+    padding: 3px 8px;
+    font-size: 1.7em;
+    line-height: 100%;
+    height: 1.7em;
+    width: 100%;
+    outline: 0;
+    margin: 0 0 3px;
+    color: #32373c; }
+  #poststuff .inside #app_appstore div:last-child {
+    margin-top: 12px; }
+  #poststuff .inside #app_appstore div.tip {
+    color: gray;
+    font-size: 10px; }
+
+/*# sourceMappingURL=index.css.map */

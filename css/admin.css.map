@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIQ;6BAEA;EACI,OAAO,EAAE,YAAY;AAGzB,6BACA;EACI,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;;ACVzB,OACA;EACE,MAAM,EAAE,KAAK",
+"sources": ["App.scss","admin.scss"],
+"names": [],
+"file": "admin.css"
+}

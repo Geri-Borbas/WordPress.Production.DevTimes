@@ -62,10 +62,23 @@ var AppAppStoreMeta = Class.extend
             this.model.iTunesLookup.artworkUrl512
         );
 
+        jQuery("#app_appstore_icon").attr(
+            "src",
+            this.model.iTunesLookup.artworkUrl512
+        );
+
         jQuery("#app_appstore_releaseDate").attr(
             "value",
             this.model.iTunesLookup.releaseDate
         );
+    },
+
+    inputDidDoubleClick: function(event)
+    {
+        var input = event.currentTarget;
+
+        // Toggle.
+        input.readOnly = !input.readOnly;
     }
 
 });

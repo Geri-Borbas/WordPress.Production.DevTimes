@@ -12,7 +12,6 @@ class AppAppStoreMeta extends Meta
 
 
     // Data.
-    public $name;
     public $twitter;
     public $appID;
 
@@ -36,6 +35,6 @@ class AppAppStoreMeta extends Meta
         // Load scripts.
         wp_enqueue_script('qwest.min.js', get_stylesheet_directory_uri().'/js/'.'qwest.min.js');
         wp_enqueue_script('eppz!js.min.js', get_stylesheet_directory_uri().'/js/'.'eppz!js.min.js');
-        wp_enqueue_script('AppAppStoreMeta.js', get_stylesheet_directory_uri().'/js/'.'AppAppStoreMeta.js', array('jquery'), '0.2.0', true);
+        wp_enqueue_script('AppAppStoreMeta.js', get_stylesheet_directory_uri().'/js/'.'AppAppStoreMeta.js', array('jquery'), '0.2.4', true);
     }
 }

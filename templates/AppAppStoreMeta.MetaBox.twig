@@ -1,51 +1,73 @@
-<div>
+<div id="app_appstore">
 
-    <label>App name</label>
-    <input type="text"
-           name="app_appstore_name"
-           value="{{ app_appstore_name }}"
-           class="widefat" />
+    <div class="horizontal">
 
-    <label>Developer Twitter account</label>
-    <input type="text"
-           name="app_appstore_twitter"
-           value="{{ app_appstore_twitter }}"
-           class="widefat" />
+        <!-- Icon -->
+        <img class="icon" id="app_appstore_icon"
+             src="http://is2.mzstatic.com/image/thumb/Purple62/v4/78/ae/26/78ae26c2-b6e1-99ae-3bc5-913d5e1e72ab/source/512x512bb.jpg" />
 
-    <label>App ID (iOS)</label>
-    <input type="text"
-           id="input_appID"
-           name="app_appstore_appID"
-           value="{{ app_appstore_appID }}"
-           class="widefat"
-           oninput="appAppStoreMeta.appIDchanged(event)"/>
+        <img class="mask"
+             src="http://sandbox.eppz.eu/devtimes/wp-content/uploads/2017/06/iTunes_Icon_Mask_175px.png" />
 
-    <label>App Store name</label>
-    <input type="text"
-           id="app_appstore_trackCensoredName"
-           name="app_appstore_trackCensoredName"
-           value="{{ app_appstore_trackCensoredName }}"
-           class="widefat" />
+        <div>
 
-    <label>App Store url</label>
-    <input type="text"
-           id="app_appstore_trackViewUrl"
-           name="app_appstore_trackViewUrl"
-           value="{{ app_appstore_trackViewUrl }}"
-           class="widefat" />
+            <!-- App ID -->
+            <input type="text"
+                   id="input_appID"
+                   name="app_appstore_appID"
+                   value="{{ app_appstore_appID }}"
+                   class="widefat"
+                   oninput="appAppStoreMeta.appIDchanged(event)"
+                   placeholder="App ID" />
 
-    <label>iTunes artwork</label>
-    <input type="text"
-           id="app_appstore_artworkUrl512"
-           name="app_appstore_artworkUrl512"
-           value="{{ app_appstore_artworkUrl512 }}"
-           class="widefat" />
+            <!-- App Store name -->
+            <input type="text"
+                   id="app_appstore_trackCensoredName"
+                   name="app_appstore_trackCensoredName"
+                   value="{{ app_appstore_trackCensoredName }}"
+                   class="widefat"
+                   placeholder="App Store name"
+                   ondblclick="appAppStoreMeta.inputDidDoubleClick(event)"
+                   readonly />
 
-    <label>Release date</label>
-    <input type="text"
-           id="app_appstore_releaseDate"
-           name="app_appstore_releaseDate"
-           value="{{ app_appstore_releaseDate }}"
-           class="widefat" />
+            <!-- Release date -->
+            <input type="text"
+                   id="app_appstore_releaseDate"
+                   name="app_appstore_releaseDate"
+                   value="{{ app_appstore_releaseDate }}"
+                   class="widefat"
+                   placeholder="Release date"
+                   ondblclick="appAppStoreMeta.inputDidDoubleClick(event)"
+                   readonly />
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <!-- App Store url -->
+        <input type="text"
+               id="app_appstore_trackViewUrl"
+               name="app_appstore_trackViewUrl"
+               value="{{ app_appstore_trackViewUrl }}"
+               class="widefat"
+               placeholder="App Store url"
+               ondblclick="appAppStoreMeta.inputDidDoubleClick(event)"
+               readonly />
+
+        <!-- iTunes artwork url -->
+        <input type="text"
+               id="app_appstore_artworkUrl512"
+               name="app_appstore_artworkUrl512"
+               value="{{ app_appstore_artworkUrl512 }}"
+               class="widefat"
+               placeholder="iTunes artwork url"
+               ondblclick="appAppStoreMeta.inputDidDoubleClick(event)"
+               readonly />
+
+    </div>
+
+    <div class="tip">&#x1F4A1 Enter Apple ID to retrieve values from iTunes. Double click to override values.</div>
 
 </div>
