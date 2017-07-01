@@ -1,0 +1,41 @@
+<tr>
+
+    {%  set prefix = "app_production_work" %}
+
+    <td>
+        {% set key = "#{prefix}_#{loop.index}_" ~ "name" %}
+        <input type="text"
+               name="{{ key }}"
+               value="{{ work.name }}"
+               class="widefat"
+               placeholder="Name"/>
+    </td>
+
+    <td>
+        {% set key = "#{prefix}_#{loop.index}_" ~ "role" %}
+        <input type="text"
+               name="{{ key }}"
+               value="{{ work.role }}"
+               class="widefat"
+               placeholder="Role"/>
+    </td>
+
+    <td>
+        {% set key = "#{prefix}_#{loop.index}_" ~ "months" %}
+        <input type="text"
+               name="{{ key }}"
+               value="{{ work.months }}"
+               class="widefat"
+               placeholder="Months"/>
+    </td>
+
+    <td>
+        {% set key = "#{prefix}_#{loop.index}_" ~ "hoursPerDay" %}
+        <input type="text"
+               name="{{ key }}"
+               value="{{ work.hoursPerDay }}"
+               class="widefat"
+               placeholder="hours/day"/>
+    </td>
+
+</tr>

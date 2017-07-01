@@ -18,4 +18,13 @@
            value="{{ app_production_teamSize }}"
            class="widefat" />
 
+    <table>
+    <tbody>
+        {% for eachWork in app_production_work %}
+            {% set eachRow = { 'index' : loop.index, 'work' : eachWork } %}
+            {% include 'Work.twig' with eachRow %}
+        {% endfor %}
+    </tbody>
+    </table>
+
 </div>

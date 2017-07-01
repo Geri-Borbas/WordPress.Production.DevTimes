@@ -83,6 +83,8 @@ class Meta
         $properties = $this->getPublicPropertiesAndValues();
         foreach ($properties as $eachPropertyName => $eachPropertyValue)
         {
+            if (strpos($eachPropertyName, 'work') !== false) continue; // Temporary dummy data guard
+
             // Load.
             $eachMetaKey = $this->id."_".$eachPropertyName;
             $eachValue = get_post_meta($post->ID, $eachMetaKey, true);
@@ -106,9 +108,6 @@ class Meta
     function getPublicPropertiesAndValues()
     {
         $publicPropertiesAndValues = Inspector::get_object_public_vars($this);
-        // echo '<pre>';
-        // print_r($publicPropertiesAndValues);
-        // echo '</pre>';
         return $publicPropertiesAndValues;
     }
 
@@ -120,6 +119,11 @@ class Meta
             $publicPropertiesAndValues[$this->id.'_'.$eachKey] = $eachValue; // Prefix
             unset($publicPropertiesAndValues[$eachKey]); // Unset unprefixed
         }
+
+        // echo '<pre>';
+        // print_r($publicPropertiesAndValues);
+        // echo '</pre>';
+
         return $publicPropertiesAndValues;
     }
 
@@ -132,9 +136,10 @@ class Meta
         if (!isset( $_POST[$this->nonce_key] ) || !wp_verify_nonce($_POST[$this->nonce_key], $this->nonce)) return;
         if(!current_user_can('edit_post', $post->ID)) return;
 
-        //Update corresponding $_POST values in meta.
+        // Update corresponding $_POST values in meta.
         foreach($_POST as $eachKey => $eachValue)
         {
+            if (strpos($eachKey, 'work') !== false) continue; // Temporary dummy data guard
             if (strpos($eachKey, $this->id) !== false) // Only if prefixed with key
             { $this->updateMeta($post->ID, $eachKey, $eachValue); }
         }

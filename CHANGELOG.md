@@ -1,5 +1,12 @@
 # twentyseventeen-devtimes
 
+* 0.3.8
+
+    + Added `Work` model
+        + Yet `load` only with dummy data in class constructor
+        + Template embedding
+            + `AppProductionMeta.MetaBox.twig` uses `Work.twig` for each table row    
+
 * 0.3.0
 
     + Built `AppAppStore` meta box
