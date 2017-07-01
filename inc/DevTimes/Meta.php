@@ -19,6 +19,7 @@ class Meta
 
     protected $title = "Meta";
     protected $id = "meta"; // Use this as prefix in template attributes
+    protected $fallback_id = "meta"; // Use this as prefix in template attributes
     protected $template = "MetaBox.twig";
 
     protected $screen = "normal";
@@ -82,9 +83,21 @@ class Meta
         $properties = $this->getPublicPropertiesAndValues();
         foreach ($properties as $eachPropertyName => $eachPropertyValue)
         {
+            // Load.
             $eachMetaKey = $this->id."_".$eachPropertyName;
+            $eachValue = get_post_meta($post->ID, $eachMetaKey, true);
+
+            // If no data, attempt to load meta using `fallback_id`.
+            if (!$eachValue)
+            {
+                $eachMetaKey = $this->fallback_id."_".$eachPropertyName;
+                $eachValue = get_post_meta($post->ID, $eachMetaKey, true);
+            }
+
+            // Set.
+            $this->$eachPropertyName = $eachValue;
+
             // echo 'Set `'.$eachPropertyName.'`'.' to meta `'.$eachMetaKey.'`.'.PHP_EOL;
-            $this->$eachPropertyName = get_post_meta($post->ID, $eachMetaKey, true);
         }
 
         // echo '</pre>';

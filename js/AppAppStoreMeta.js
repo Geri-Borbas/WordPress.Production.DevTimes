@@ -1,4 +1,4 @@
-var AppDetailsMeta = Class.extend
+var AppAppStoreMeta = Class.extend
 ({
 
 
@@ -12,7 +12,7 @@ var AppDetailsMeta = Class.extend
     construct: function()
     { },
 
-    appID_iOS_changed: function(event)
+    appIDchanged: function(event)
     {
         var value = event.currentTarget.value;
         var isAppID = /\b[0-9]{9}\b/.test(value);
@@ -29,9 +29,9 @@ var AppDetailsMeta = Class.extend
         qwest.get(url)
             .then(function(xhr, response)
             {
-                appDetailsMeta.model.iTunesLookup = JSON.parse(response).results[0];
-                // console.log(appDetailsMeta.model.iTunesLookup);
-                appDetailsMeta.update();
+                appAppStoreMeta.model.iTunesLookup = JSON.parse(response).results[0];
+                // console.log(appAppStoreMeta.model.iTunesLookup);
+                appAppStoreMeta.update();
 
             })
             .catch(function(error, xhr, response)
@@ -47,22 +47,22 @@ var AppDetailsMeta = Class.extend
 
     update: function()
     {
-        jQuery("#app_details_trackCensoredName").attr(
+        jQuery("#app_appstore_trackCensoredName").attr(
             "value",
             this.model.iTunesLookup.trackCensoredName
         );
 
-        jQuery("#app_details_trackViewUrl").attr(
+        jQuery("#app_appstore_trackViewUrl").attr(
             "value",
             this.model.iTunesLookup.trackViewUrl
         );
 
-        jQuery("#app_details_artworkUrl512").attr(
+        jQuery("#app_appstore_artworkUrl512").attr(
             "value",
             this.model.iTunesLookup.artworkUrl512
         );
 
-        jQuery("#app_details_releaseDate").attr(
+        jQuery("#app_appstore_releaseDate").attr(
             "value",
             this.model.iTunesLookup.releaseDate
         );
@@ -71,4 +71,4 @@ var AppDetailsMeta = Class.extend
 });
 
 // Instantiate.
-var appDetailsMeta = new AppDetailsMeta();
+var appAppStoreMeta = new AppAppStoreMeta();

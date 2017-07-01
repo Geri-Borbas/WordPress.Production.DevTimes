@@ -1,5 +1,15 @@
 # twentyseventeen-devtimes
 
+* 0.2.3
+
+    + `design` files
+    + Renamed model files
+        + `AppDetails` are `AppAppStore`
+        + `AppProject` are `AppProduction`
+    + `Meta` now have `fallback_id_`
+    + Added error logging (with `.gitignore`)
+    + `css` folder for `scss` assets
+
 * 0.2.2
 
     + Put twig templates to `templates`

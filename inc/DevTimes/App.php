@@ -4,8 +4,8 @@
 namespace DevTimes;
 
 
-require_once('AppDetailsMeta.php');
-require_once('AppProjectMeta.php');
+require_once('AppAppStoreMeta.php');
+require_once('AppProductionMeta.php');
 
 
 class App
@@ -49,8 +49,8 @@ class App
         );
 
         // Meta (they hook up their actions within).
-        $this->details = new AppDetailsMeta($this->postType);
-        $this->project = new AppProjectMeta($this->postType);
+        $this->details = new AppAppStoreMeta($this->postType);
+        $this->project = new AppProductionMeta($this->postType);
     }
 
     function register_taxonomy_with_name($taxonomy_singular, $taxonomy_plural, $hierarchical = false)

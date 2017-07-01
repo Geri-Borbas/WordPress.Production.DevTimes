@@ -7,14 +7,14 @@ namespace DevTimes;
 require_once('Meta.php');
 
 
-class AppDetailsMeta extends Meta
+class AppAppStoreMeta extends Meta
 {
 
 
     // Data.
     public $name;
     public $twitter;
-    public $appID_iOS;
+    public $appID;
 
     // iTunes.
     public $trackCensoredName;
@@ -23,9 +23,10 @@ class AppDetailsMeta extends Meta
     public $releaseDate;
 
     // Meta attributes.
-    protected $title = "Details";
-    protected $id = "app_details"; // Use this as prefix in template attributes
-    protected $template = "AppDetailsMeta.MetaBox.twig";
+    protected $title = " App Store";
+    protected $id = "app_appstore"; // Use this as prefix in template attributes
+    protected $fallback_id = "app_details";
+    protected $template = "AppAppStoreMeta.MetaBox.twig";
 
 
     protected function render()
@@ -35,6 +36,6 @@ class AppDetailsMeta extends Meta
         // Load scripts.
         wp_enqueue_script('qwest.min.js', get_stylesheet_directory_uri().'/js/'.'qwest.min.js');
         wp_enqueue_script('eppz!js.min.js', get_stylesheet_directory_uri().'/js/'.'eppz!js.min.js');
-        wp_enqueue_script('AppDetailsMeta.js', get_stylesheet_directory_uri().'/js/'.'AppDetailsMeta.js', array('jquery'), '0.2.0', true);
+        wp_enqueue_script('AppAppStoreMeta.js', get_stylesheet_directory_uri().'/js/'.'AppAppStoreMeta.js', array('jquery'), '0.2.0', true);
     }
 }
