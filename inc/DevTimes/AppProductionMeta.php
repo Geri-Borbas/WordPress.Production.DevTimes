@@ -39,6 +39,16 @@ class AppProductionMeta extends Meta
         );
     }
 
+    function render()
+    {
+        parent::render();
+
+        // Load scripts.
+        wp_enqueue_script('qwest.min.js', get_stylesheet_directory_uri().'/js/'.'qwest.min.js');
+        wp_enqueue_script('eppz!js.min.js', get_stylesheet_directory_uri().'/js/'.'eppz!js.min.js');
+        wp_enqueue_script('AppProductionMeta.js', get_stylesheet_directory_uri().'/js/'.'AppProductionMeta.js', array('jquery'), '0.3.8', true);
+    }
+
     function prefixedArrayOfPublicPropertiesAndValues()
     {
         $publicPropertiesAndValues = parent::prefixedArrayOfPublicPropertiesAndValues();

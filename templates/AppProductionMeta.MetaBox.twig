@@ -24,6 +24,8 @@
             {% set eachRow = { 'index' : loop.index, 'work' : eachWork } %}
             {% include 'Work.twig' with eachRow %}
         {% endfor %}
+        <!-- New -->
+        {% include 'Work.twig' with { 'index' : app_production_work|length + 1 } %}
     </tbody>
     </table>
 

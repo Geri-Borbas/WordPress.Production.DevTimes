@@ -1,9 +1,9 @@
-<tr>
-
-    {%  set prefix = "app_production_work" %}
+{% set prefix = "app_production_work" %}
+{% set key = "#{prefix}_#{index}" %}
+<tr id="{{ key }}">
 
     <td>
-        {% set key = "#{prefix}_#{loop.index}_" ~ "name" %}
+        {% set key = "#{prefix}_#{index}_" ~ "name" %}
         <input type="text"
                name="{{ key }}"
                value="{{ work.name }}"
@@ -12,7 +12,7 @@
     </td>
 
     <td>
-        {% set key = "#{prefix}_#{loop.index}_" ~ "role" %}
+        {% set key = "#{prefix}_#{index}_" ~ "role" %}
         <input type="text"
                name="{{ key }}"
                value="{{ work.role }}"
@@ -21,7 +21,7 @@
     </td>
 
     <td>
-        {% set key = "#{prefix}_#{loop.index}_" ~ "months" %}
+        {% set key = "#{prefix}_#{index}_" ~ "months" %}
         <input type="text"
                name="{{ key }}"
                value="{{ work.months }}"
@@ -30,12 +30,30 @@
     </td>
 
     <td>
-        {% set key = "#{prefix}_#{loop.index}_" ~ "hoursPerDay" %}
+        {% set key = "#{prefix}_#{index}_" ~ "hoursPerDay" %}
         <input type="text"
                name="{{ key }}"
                value="{{ work.hoursPerDay }}"
                class="widefat"
                placeholder="hours/day"/>
+    </td>
+
+    <td>
+        {% set key = "#{prefix}_#{index}_" ~ "remove" %}
+        <a name="{{ key }}"
+           class="button button-small"
+           onclick="appProductionMeta.removeDidClick(event)">
+            <div class="dashicons-before dashicons-trash"></div>
+        </a>
+    </td>
+
+    <td>
+        {% set key = "#{prefix}_#{index}_" ~ "add" %}
+        <a name="{{ key }}"
+           class="button button-small"
+           onclick="appProductionMeta.addDidClick(event)">
+            <div class="dashicons-before dashicons-plus"></div>
+        </a>
     </td>
 
 </tr>

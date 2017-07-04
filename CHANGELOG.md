@@ -1,5 +1,10 @@
 # twentyseventeen-devtimes
 
+* 0.4.0
+
+    + Added buttons to `Work` table rows
+        + `AppProductionMeta.js` with corresponding event hooks
+
 * 0.3.8
 
     + Added `Work` model
